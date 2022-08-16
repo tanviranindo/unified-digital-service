@@ -17,8 +17,8 @@ and performance. However, the main goal of this project was chosen to get hands-
 [![Live](https://img.shields.io/badge/Live-Demo-red)](http://unified-digital-service.ap-south-1.elasticbeanstalk.com)
 [![README](https://img.shields.io/badge/Help-Doc-lightgrey)](README.md)
 [![GitHub Release](https://img.shields.io/github/v/release/tanviranindo/unified-digital-service)](https://github.com/tanviranindo/unified-digital-service/releases)
-[![GitHub License](https://img.shields.io/github/license/tanviranindo/unified-digital-service.svg)](https://github.com/tanviranindo/unified-digital-service/blob/master/LICENSE.md)
-[![Last Commit](https://img.shields.io/github/last-commit/tanviranindo/unified-digital-service/master)](https://github.com/tanviranindo/unified-digital-service/commits/master)
+[![GitHub License](https://img.shields.io/github/license/tanviranindo/unified-digital-service.svg)](https://github.com/tanviranindo/unified-digital-service/blob/main/LICENSE.md)
+[![Last Commit](https://img.shields.io/github/last-commit/tanviranindo/unified-digital-service/main)](https://github.com/tanviranindo/unified-digital-service/commits/main)
 
 ## Contents
 
