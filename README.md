@@ -232,7 +232,7 @@ it can handle upto 1MB only as for free tier.
 - [ ] Progress bar for file upload
 - [ ] File pagination and cache need to be added
 - [ ] Users can share files publicly or with other users
-- [ ] Document grouping (Folder/Category) needs to be implemented
+- [ ] Document grouping needs to be implemented
 - [ ] Recover and change password
 
 ## Bugs
@@ -245,7 +245,6 @@ Following improvements can be added to the next version of the application -
 
 - [ ] Deploy Folder Structure
 - [ ] Multiple File Upload
-- [ ] Create User Role Against Different Parameters (e.g. Premium, Free etc.)
 - [ ] Offline Error Handle
 - [ ] Create Android Application
 
