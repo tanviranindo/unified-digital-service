@@ -10,7 +10,7 @@ and performance. However, the main goal of this project was chosen to get hands-
 ## Live
 
 - Elastic Beanstalk - [http://unified-digital-service.ap-south-1.elasticbeanstalk.com](http://unified-digital-service.ap-south-1.elasticbeanstalk.com)
-- Heroku - [URL](https://u-d-s.herokuapp.com) (Maintenance - Deployment Error)
+- Heroku - [https://u-d-s.herokuapp.com](https://u-d-s.herokuapp.com)
 
 ## Badges
 
