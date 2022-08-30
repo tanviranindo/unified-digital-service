@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+//import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +29,8 @@ public class User {
 
     @Column(length = 60)
     private String password;
+    @Column(length = 250)
+//    private String photo;
 
     private boolean enabled;
 
@@ -39,12 +42,13 @@ public class User {
     public User() {
     }
 
-    public User(String name, String surname, String username, String email, String password, boolean enabled) {
+    public User(String name, String surname, String username, String email, String password,  boolean enabled) {
         this.name = name;
         this.surname = surname;
         this.username = username;
         this.email = email;
         this.password = password;
+//        this.photo = photo;
         this.enabled = enabled;
     }
 
@@ -54,6 +58,7 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+//        this.photo = photo;
         this.enabled = enabled;
         this.roles = roles;
     }

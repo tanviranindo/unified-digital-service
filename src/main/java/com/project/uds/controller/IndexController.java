@@ -10,23 +10,10 @@ import org.springframework.web.context.request.WebRequest;
 @Controller
 @RequestMapping
 public class IndexController {
-    public IndexController() {
-    }
 
     @GetMapping(value = {"/", "/index"})
     public String index() {
         return "public/index";
     }
 
-    @GetMapping(value = "/login")
-    public String login() {
-        return "public/login";
-    }
-
-    @GetMapping(value = "/register")
-    public String showRegistrationForm(WebRequest request, Model model) {
-        UserDTO UserDTO = new UserDTO();
-        model.addAttribute("UserDTO", UserDTO);
-        return "public/register";
-    }
 }

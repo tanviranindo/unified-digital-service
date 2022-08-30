@@ -51,6 +51,35 @@ public class StorageService {
         return fileRepository.findFileByUserId(uuD.getId());
     }
 
+    private Boolean uploadDatabase(UserDTO uuD, java.io.File fileObj) {
+        String mimeType = new MimetypesFileTypeMap().getContentType(fileObj);
+
+        java.sql.Date lastModifiedDate = new java.sql.Date(fileObj.lastModified());
+
+        File objectKey = new File(fileObj.getName(), mimeType, fileObj.length(), lastModifiedDate, fileObj.isDirectory(), fileObj.isFile(), uuD.getId());
+
+        fileRepository.save(objectKey);
+
+
+        return fileObj.delete();
+    }
+
+
+    public Boolean uploadProfile(MultipartFile file) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            UserDTO uuD = userDTOService.findByUsername(authentication.getName());
+
+            java.io.File fileObj = convertMultiPartFileToFile(file);
+            s3Client.putObject(new PutObjectRequest(bucketName, uuD.getUsername() + "/profile/" + fileObj.getName(), fileObj));
+//            String fileName = fileObj.getName().replaceFirst("[.][^.]+$", "");
+
+            return uploadDatabase(uuD, fileObj);
+
+        }
+        return false;
+    }
+
 
     public Boolean uploadFile(MultipartFile file) {
 
@@ -62,16 +91,7 @@ public class StorageService {
             s3Client.putObject(new PutObjectRequest(bucketName, uuD.getUsername() + "/" + fileObj.getName(), fileObj));
 //            String fileName = fileObj.getName().replaceFirst("[.][^.]+$", "");
 
-            String mimeType = new MimetypesFileTypeMap().getContentType(fileObj);
-
-            java.sql.Date lastModifiedDate = new java.sql.Date(fileObj.lastModified());
-
-            File objectKey = new File(fileObj.getName(), mimeType, fileObj.length(), lastModifiedDate, fileObj.isDirectory(), fileObj.isFile(), uuD.getId());
-
-            fileRepository.save(objectKey);
-
-
-            return fileObj.delete();
+            return uploadDatabase(uuD, fileObj);
         }
         return false;
     }
@@ -134,6 +154,12 @@ public class StorageService {
         }
         return convertedFile;
     }
+
+//CopyObjectRequest copyObjRequest = new CopyObjectRequest(bucketName,
+//           keyName, bucketName, destinationKeyName);
+//s3client.copyObject(copyObjRequest);
+//s3client.deleteObject(new DeleteObjectRequest(bucketName, keyName));
+//
 
 
 //    public void shareFile(String fileName) {

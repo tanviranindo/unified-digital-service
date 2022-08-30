@@ -1,15 +1,8 @@
-const getJsonUsers = "/admin/json-users";
-const token = $("#_csrf").attr("content");
-const header = $("#_csrf_header").attr("content");
-
-let userIdToDelete;
-let rowIndexToDelete;
-
 $.ajaxSetup({
     headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        "X-CSRF-TOKEN": token,
+        "X-CSRF-TOKEN": $("#_csrf").attr("content"),
     },
 });
 
@@ -19,7 +12,7 @@ function setRowIndexAndUserId(row, id) {
 }
 
 function closeModal(nameOfTheModal) {
-    $(nameOfTheModal).modal("toggle");
+    $(nameOfTheModal).modal("hide");
 }
 
 function deleteEntity() {
@@ -29,7 +22,7 @@ function deleteEntity() {
         url: deleteUserUrl,
         type: "DELETE",
         success: function () {
-            let table = $("#user-table");
+            let table = $("#user-table"), userIdToDelete, rowIndexToDelete;
             table[0].deleteRow(rowIndexToDelete);
 
             $("#alert-messages").append(
@@ -39,6 +32,7 @@ function deleteEntity() {
                 "User deleted!" +
                 "</div>"
             );
+
             closeModal("#deleteModal");
             userIdToDelete = "";
             rowIndexToDelete = "";

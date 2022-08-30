@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,8 @@ public class UserUpdateDTO {
     @ValidEmail
     @NotBlank(message = "Email is required")
     private String email;
+
+//    private String photo;
 
     private List<Role> roles = new ArrayList<>();
 

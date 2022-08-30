@@ -9,6 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping
 public class LoginController {
 
+
+    @GetMapping(value = "/login")
+    public String login() {
+        return "public/login";
+    }
+
+
     @GetMapping("/login-error")
     public String loginError(Model model) {
         model.addAttribute("loginError", true);

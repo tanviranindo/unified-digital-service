@@ -118,6 +118,7 @@ public class UserService {
         user.setUsername(UserDTO.getUsername());
         user.setEmail(UserDTO.getEmail());
         user.setPassword(bCryptPasswordEncoder.encode(UserDTO.getPassword()));
+//        user.setPhoto(UserDTO.getPhoto());
         user.setRoles(Collections.singletonList(roleService.findByName("ROLE_USER")));
         return user;
     }
@@ -128,6 +129,7 @@ public class UserService {
         persistedUser.setUsername(userUpdateDTO.getUsername());
         persistedUser.setEmail(userUpdateDTO.getEmail());
         persistedUser.setRoles(getAssignedRolesList(userUpdateDTO));
+//        persistedUser.setPhoto(userUpdateDTO.getPhoto());
         persistedUser.setEnabled(userUpdateDTO.isEnabled());
         return persistedUser;
     }

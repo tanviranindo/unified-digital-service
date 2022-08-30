@@ -54,6 +54,13 @@ public class StorageController {
     }
 
 
+    @GetMapping(value = "/view/file/{filename}")
+    public ResponseEntity<byte[]> viewFile(@PathVariable String filename) {
+        System.out.println(filename);
+        ByteArrayOutputStream downloadInputStream = service.downloadFile(filename);
+        return ResponseEntity.ok().contentType(contentType(filename)).header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + filename + "\"").body(downloadInputStream.toByteArray());
+    }
+
     @GetMapping(value = "/delete/file/{fileName}")
     public String deleteFile(@PathVariable(name = "fileName") String fileName) {
         service.deleteFile(fileName);

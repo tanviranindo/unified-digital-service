@@ -41,5 +41,4 @@ public class RestControllerUser {
         return new ResponseEntity<>(userToDelete.get(), HttpStatus.NO_CONTENT);
     }
 
-
 }

@@ -60,6 +60,12 @@
                 <p class="text-danger" th:if="${#fields.hasErrors('matchingPassword')}"
                    th:errors="*{matchingPassword}"></p>
             </div>
+<!--            <div class="form-group col-md-6">-->
+<!--                <label for="myProfile">Profile Picture</label>-->
+<!--                <input type="file" name="myProfile" accept="image/x-png,image/jpeg,image/jpg,image/gif"-->
+<!--                       class="form-control" id="myProfile"-->
+<!--                       th:field="*{photo}" required/>-->
+<!--            </div>-->
         </div>
         <div class="buttonCenter">
             <button type="reset" class="btn btn-warning">Reset</button>
@@ -67,7 +73,9 @@
             <button type="submit" class="btn btn-dark">Sign Up</button>
         </div>
         <br/>
-        <p style="text-align: center" class="center">Already have an account? <a style="text-decoration: none" th:href="@{/login}">Click here to login</a></p>
+        <p style="text-align: center" class="center">Already have an account? <a style="text-decoration: none"
+                                                                                 th:href="@{/login}">Click here to
+            login</a></p>
     </form>
 </div>
 <div th:replace="fragments/jsScripts :: scripts"></div>

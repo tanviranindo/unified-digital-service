@@ -5,4 +5,4 @@
 |  `--'  |    |  '--'  |   .----)   |   
  \______/     |_______/    |_______/    
 
-Spring Boot ${spring-boot.version}
+Spring Boot: ${spring-boot.version}

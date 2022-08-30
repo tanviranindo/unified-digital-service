@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
+import java.sql.Blob;
 
 @Getter
 @Setter
@@ -29,6 +30,8 @@ public class UserDTO {
 
     @NotBlank(message = "Password is required")
     private String password;
+
+//    private String photo;
 
     @NotBlank(message = "Matching password is required")
     private String matchingPassword;

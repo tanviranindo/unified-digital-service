@@ -3,14 +3,16 @@ package com.project.uds.controller;
 import com.project.uds.dto.UserDTO;
 import com.project.uds.model.User;
 import com.project.uds.service.email.EmailService;
+import com.project.uds.service.storage.StorageService;
 import com.project.uds.service.user.UserService;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,11 +22,21 @@ import javax.validation.Valid;
 @RequestMapping
 public class RegisterController {
     private final UserService userService;
+
+    private final StorageService storageService;
     private final EmailService emailService;
 
-    public RegisterController(UserService userService, EmailService emailService) {
+    public RegisterController(UserService userService, StorageService storageService, EmailService emailService) {
         this.userService = userService;
+        this.storageService = storageService;
         this.emailService = emailService;
+    }
+
+    @GetMapping(value = "/register")
+    public String showRegistrationForm(WebRequest request, Model model) {
+        UserDTO UserDTO = new UserDTO();
+        model.addAttribute("UserDTO", UserDTO);
+        return "public/register";
     }
 
     @PostMapping(value = "/process")

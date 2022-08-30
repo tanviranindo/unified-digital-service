@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.swing.*;
+import java.awt.*;
+import java.util.Arrays;
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -58,13 +62,16 @@ public class UserController {
         }
 
         model.addAttribute("firstName", user.getName());
-        model.addAttribute("lastName", user.getSurname ());
+        model.addAttribute("lastName", user.getSurname());
         model.addAttribute("handle", user.getUsername());
         model.addAttribute("email", user.getEmail());
+//        model.addAttribute("photo", user.getPhoto());
+//        System.out.println(user.getPhoto());
         model.addAttribute("roles", roleList.toString().replaceAll("ROLE_", ""));
         model.addAttribute("accountStatus", user.isEnabled() ? "Verified" : "Not verified");
 
         modelAndView.setViewName("user/account");
         return modelAndView;
     }
+
 }
